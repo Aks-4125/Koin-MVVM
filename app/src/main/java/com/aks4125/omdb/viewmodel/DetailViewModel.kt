@@ -18,7 +18,7 @@ class DetailViewModel(private val service: WebService) : ViewModel() { // TODO i
      * fetch movies on io thread and set response
      */
     fun fetchMovieDetail(movieId: String) {
-        job = CoroutineScope(Dispatchers.IO + SupervisorJob()).launch {
+        job = CoroutineScope(Dispatchers.IO).launch {
             liveData.postValue(NetworkBound.Loading())
             Log.d(MainActivity.LOGGER, "API call requested on ->" + Thread.currentThread().name)
             try {
